@@ -9,12 +9,23 @@ from flask import Flask, request, jsonify
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+import dash_html_components as html
 
 app = Flask(__name__)
 
 # define deltime csv to df to json
 df_init = pd.read_csv ('deliverytime.csv')
 deltime = df_init.to_json(orient="records")
+
+colors = {'background':'#111111', 'text': '#7FDBFF'}
+
+stylediv={'textAlign': 'center', 'color': colors['text']}
+
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash',style=stylediv),
+    html.Div(children='Dash: A web application framework for Python',style=stylediv),
+   ], style={'backgroundColor':colors['background']}
+)
 
 # find next id (used for appending)
 def _find_next_id():
