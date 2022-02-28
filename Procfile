@@ -1,1 +1,1 @@
-web: gunicorn DeltimeApp:server --preload
+web: gunicorn index:server --preload
